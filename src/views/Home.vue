@@ -1,18 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <div class="home">{{res}}</div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { testHttp } from "@/api/test.js";
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  name: "home",
+  data() {
+    return {
+      res: ""
+    };
+  },
+  components: {},
+  created() {
+    testHttp({
+      fnRes: res => {
+        this.res = res;
+        // console.log("res",res)
+      }
+    });
   }
-}
+};
 </script>
+
+<style scoped lang="less">
+.home {
+  margin: 0 auto;
+  width: 325px;
+  height: 185px;
+  background: yellow;
+  border-radius: 10px;
+}
+</style>

@@ -1,5 +1,22 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <van-rate v-model="val"></van-rate>
   </div>
 </template>
+
+<script>
+import { Rate } from "vant";
+export default {
+  components: {
+    [Rate.name]: Rate
+  },
+  data() {
+    return {
+      val: 5
+    };
+  }
+};
+</script>
+
+<style>
+</style>
